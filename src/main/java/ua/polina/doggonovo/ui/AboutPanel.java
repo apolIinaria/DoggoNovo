@@ -51,6 +51,17 @@ public class AboutPanel extends VBox {
         info.setMaxWidth(500);
         info.setAlignment(Pos.CENTER);
 
-        getChildren().addAll(logo, title, version, new Separator(), description, new Separator(), author, info);
+        Hyperlink github = new Hyperlink("GitHub: https://github.com/apolIinaria/DoggoNovo");
+        github.setStyle("-fx-font-size: 14px; -fx-text-fill: #1a73e8;");
+
+        github.setOnAction(e -> {
+            try {
+                Desktop.getDesktop().browse(new URI("https://github.com/apolIinaria/DoggoNovo"));
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        getChildren().addAll(logo, title, version, new Separator(), description, new Separator(), author, github, info);
     }
 }
